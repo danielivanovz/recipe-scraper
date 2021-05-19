@@ -1,31 +1,28 @@
-class Recipe {
+class Link {
   constructor(title, link) {
-    // , ingredients, image
     this.title = title;
     this.link = link;
-    // this.ingredients = ingredients;
-    // this.image = image;
   }
 }
 
-class Recipes {
+class Links {
   constructor() {
-    this.recipes = [];
+    this.links = [];
   }
 
-  newRecipe(title, link) {
-    let p = new Recipe(title, link);
-    this.recipes.push(p);
+  createLink(title, link) {
+    let p = new Link(title, link);
+    this.links.push(p);
     return p;
   }
 
-  get allModels() {
-    return this.recipes;
+  get allLinks() {
+    return this.links;
   }
 
-  get numberOfRecipes() {
-    return this.recipes.length;
+  get numberOfLinks() {
+    return this.links.length;
   }
 }
 
-module.exports = Recipes;
+module.exports = Links;

@@ -1,14 +1,13 @@
-//const Models = require('./Model');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 
-const Recipes = require('../utils/Model');
-const recipe = new Recipes();
+const Links = require('../utils/Model');
+const linksCollection = new Links();
 
 const url = 'https://www.giallozafferano.it/ricette-cat/page1/';
 const subUrl = 'https://www.giallozafferano.it/ricette-cat/';
-const pathJSON = './test/recipes.json';
+const pathJSON = './output/links.json';
 
 let pageIncrementor = 1;
 let scraped = false;
@@ -42,60 +41,61 @@ const getDOMModel = async (url) => {
 };
 
 /**
- * @return {recipe}
+ * @return {link}
  */
-const getLink = async ($, recipe) => {
+const createLinksCollection = async ($, linksCollection) => {
   try {
     let cardsTemporary = await $('.gz-wrap-recipe-top > h2').each(
       (i, value) => {
-        recipe.newRecipe(
+        linksCollection.createLink(
           $(value).find('a').attr('href'),
           $(value).find('a').attr('title')
         );
       }
     );
-    return recipe.link;
+    return linksCollection.link;
   } catch (error) {
     console.error(error);
     return false;
   }
 };
 
-const scrapeRecipe = async (url) => {
+const scrapeLink = async (url) => {
   try {
     const status = await checkStatusUtils(url);
-    // if (pageIncrementor < 3) { // Test Purpos, scrap only two pages
     if (status.includes('Pagina successiva')) {
       await getDOMModel(url).then(($) => {
         setTimeout(() => {
-          getLink($, recipe);
+          createLinksCollection($, linksCollection);
         }, 0);
       });
-      return scrapeRecipe(`${subUrl}page${(pageIncrementor += 1)}/`);
+      return scrapeLink(`${subUrl}page${(pageIncrementor += 1)}/`);
     }
-    return recipe;
+    return linksCollection;
   } catch (error) {
     console.error(error);
   }
 };
 
-const writeJSON = async (recipe) => {
+const writeJSON = async (linksCollection) => {
   try {
-    fs.writeFileSync('./test/recipes.json', JSON.stringify(recipe, null, 4));
-    console.log('JSON data is saved');
+    fs.writeFileSync(pathJSON, JSON.stringify(linksCollection, null, 4));
+    console.log(
+      `JSON data is saved and we successfully scraped: ${linksCollection.numberOfLinks} recipes`
+    );
   } catch (error) {
     console.error(error);
   }
 };
 
 if (!fs.existsSync(pathJSON)) {
-  scrapeRecipe(url).then(() => {
-    writeJSON(recipe);
+  scrapeLink(url).then(() => {
+    writeJSON(linksCollection);
     scraped = true;
   });
 
   const loader = setInterval(() => {
-    console.log(recipe.numberOfRecipes);
+    console.log(linksCollection.numberOfLinks);
     if (scraped) {
       clearInterval(loader);
     }
