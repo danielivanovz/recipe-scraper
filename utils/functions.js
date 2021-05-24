@@ -9,6 +9,12 @@ const URL = `${subURL}/ricette-cat/`;
 const recipeCollection = [];
 let isScraped = false;
 
+/**
+ * Returns response that will be check for status 200
+ *
+ * @param {String} URL The url to fetch from
+ * @return {Object} response is an axios response
+ */
 const getStatus = async (URL) => {
 	try {
 		const response = await axios.get(URL);
@@ -18,6 +24,12 @@ const getStatus = async (URL) => {
 	}
 };
 
+/**
+ * Check if we successfully connected to the @param URL and returns @param $ cheerio.
+ *
+ * @param {String} URL The url to fetch from
+ * @return {$} $ cheerio object
+ */
 const getDOMModel = async (URL) => {
 	try {
 		let response = await getStatus(URL);
@@ -27,6 +39,12 @@ const getDOMModel = async (URL) => {
 	}
 };
 
+/**
+ * Fetch the DOM from @param URL and returns @param links.
+ *
+ * @param {String} URL The url to fetch from
+ * @return {Object} links that contains all the recipe links from a single page
+ */
 const getLink = async (URL) => {
 	const $ = await getDOMModel(URL);
 
@@ -40,11 +58,24 @@ const getLink = async (URL) => {
 	});
 };
 
+/**
+ * Fetch the last page of the pagination - this function will be changed.
+ *
+ * @param {String} URL The url to fetch from
+ * @return {Number} pageNumber that indicates last page
+ */
 const getLastPage = async (URL) => {
 	const $ = await getDOMModel(URL);
 	return $('span.disabled.total-pages').text();
 };
 
+/**
+ * Recursive fetch of paginated content and then it calls @param writeJSON()
+ * and sets as TRUE the booo isScraped which handles the intervall in index.js
+ *
+ * @param {String} URL The url to fetch from
+ * @param {Number} pageNumber that indicates last page
+ */
 const scrapePage = async (URL, pageNumber) => {
 	return new Promise(async (resolve, reject) => {
 		if (parseInt(pageNumber) !== 0) {
@@ -66,12 +97,23 @@ const scrapePage = async (URL, pageNumber) => {
 	});
 };
 
+/**
+ * Handles and Serves the recursive fetch in @param scrapePage()
+ *
+ * @param {String} URL The url to fetch from
+ */
 const scrapeLinks = async (URL) => {
 	let pageNumber = await getLastPage(URL);
 	const $ = await getDOMModel(URL);
 	scrapePage(URL, pageNumber);
 };
 
+/**
+ * Scrapes the recipe and returns an object
+ *
+ * @param {String} URL The url to fetch from
+ * @returns {Object} recipe Contains the scraped recipe
+ */
 const scrapeRecipe = async (url) => {
 	return new Promise(async (resolve, reject) => {
 		const $ = await getDOMModel(url);
@@ -103,10 +145,15 @@ const scrapeRecipe = async (url) => {
 		let difficulty = $('ul > li:nth-child(1) > span.gz-name-featured-data > strong').text();
 		let time = parseInt($('ul > li:nth-child(2) > span.gz-name-featured-data > strong').text());
 
-		resolve({ recipe: { title, image, ingredients, description, calories, category, difficulty, time } });
+		resolve({ title, image, ingredients, description, calories, category, difficulty, time });
 	});
 };
 
+/**
+ * Exports the @param recipeCollection to recipes.json
+ *
+ * @returns {JSON} recipe.json and logs the quantity of recipes scraped
+ */
 const writeJSON = async () => {
 	try {
 		fs.writeFileSync(pathJSON, JSON.stringify(recipeCollection, null, 4));
