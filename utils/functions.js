@@ -78,7 +78,8 @@ const scrapeRecipe = async (url) => {
 
 		let title = $('div.gz-title-content.gz-innerdesktop > h1').text();
 
-		let image = $('.gz-featured-image > img').attr('data-src');
+		let image =
+			$('.gz-featured-image > img').attr('data-src') || $('div.gz-topstrip-recipe > div:nth-child(1) > div > picture > img').attr('src');
 
 		let ingredientsRAW = $('.gz-list-ingredients > dd').toArray();
 		let ingredients = ingredientsRAW.map((item) => {
@@ -100,7 +101,7 @@ const scrapeRecipe = async (url) => {
 		let calories = $('.gz-text-calories-total').text().replace(/\s/g, '').slice(0, -3);
 		let category = $('.gz-breadcrumb > ul > li:nth-child(1) > a').text();
 		let difficulty = $('ul > li:nth-child(1) > span.gz-name-featured-data > strong').text();
-		let time = $('ul > li:nth-child(2) > span.gz-name-featured-data > strong').text();
+		let time = parseInt($('ul > li:nth-child(2) > span.gz-name-featured-data > strong').text());
 
 		resolve({ recipe: { title, image, ingredients, description, calories, category, difficulty, time } });
 	});
