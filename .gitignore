@@ -1,2 +1,6 @@
 /node_modules
 /test/recipe.json
+/output
+/idea
+output/recipes.json
+output/recipes.json
