@@ -104,7 +104,6 @@ const scrapePage = async (URL, pageNumber) => {
  */
 const scrapeLinks = async (URL) => {
 	let pageNumber = await getLastPage(URL);
-	const $ = await getDOMModel(URL);
 	scrapePage(URL, pageNumber);
 };
 
@@ -118,17 +117,18 @@ const scrapeRecipe = async (url) => {
 	return new Promise(async (resolve, reject) => {
 		const $ = await getDOMModel(url);
 
-		let title = $('div.gz-title-content.gz-innerdesktop > h1').text();
+		let title = $('div.gz-title-content.gz-innerdesktop > h1').text().toLowerCase();
 
 		let image =
-			$('.gz-featured-image > img').attr('data-src') || $('div.gz-topstrip-recipe > div:nth-child(1) > div > picture > img').attr('src');
+			$('.gz-featured-image > img').attr('data-src') ||
+			$('div.gz-topstrip-recipe > div:nth-child(1) > div > picture > img').attr('src');
 
 		let ingredientsRAW = $('.gz-list-ingredients > dd').toArray();
 		let ingredients = ingredientsRAW.map((item) => {
 			let temp = $(item).text().replace(/\s/g, '').slice(0, -4);
 			let quantity = $(item).text().replace(/\s/g, '').replace(temp, '');
 
-			let ingredient = $(item).find('a').text();
+			let ingredient = $(item).find('a').text().toLowerCase();
 			return { ingredient, quantity };
 		});
 
@@ -140,9 +140,9 @@ const scrapeRecipe = async (url) => {
 			return { step: index, instructions: step };
 		});
 
-		let calories = $('.gz-text-calories-total').text().replace(/\s/g, '').slice(0, -3);
-		let category = $('.gz-breadcrumb > ul > li:nth-child(1) > a').text();
-		let difficulty = $('ul > li:nth-child(1) > span.gz-name-featured-data > strong').text();
+		let calories = parseInt($('.gz-text-calories-total').text().replace(/\s/g, '').slice(0, -3));
+		let category = $('.gz-breadcrumb > ul > li:nth-child(1) > a').text().toLowerCase();
+		let difficulty = $('ul > li:nth-child(1) > span.gz-name-featured-data > strong').text().toLowerCase();
 		let time = parseInt($('ul > li:nth-child(2) > span.gz-name-featured-data > strong').text());
 
 		resolve({ title, image, ingredients, description, calories, category, difficulty, time });
