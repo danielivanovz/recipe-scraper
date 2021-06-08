@@ -1,9 +1,15 @@
-#Recipe Scraper
+<h1 align="center">recipe scraper</h1>
 
-**A NodeJS application for scraping recipes from giallozafferono.**
+<h5 align="center">A NodeJS application for scraping recipes from giallozafferono.</h5>
 
-[![Build Status](https://travis-ci.com/heyiamZer0/recipe-scraper.svg?branch=main)](https://travis-ci.org/jadkins89/Recipe-Scraper)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e19f00790723cfbae553/maintainability)](https://codeclimate.com/github/heyiamZer0/recipe-scraper/maintainability)
+<div align="center">
+  <a href="https://travis-ci.com/github/heyiamZer0/recipe-scraper">
+    <img src="https://travis-ci.com/heyiamZer0/recipe-scraper.svg?branch=main" alt="Build Status">
+  </a>
+  <a href="https://codeclimate.com/github/heyiamZer0/recipe-scraper/maintainability"><img src="https://api.codeclimate.com/v1/badges/e19f00790723cfbae553/maintainability" /></a>
+</div>
+<br>
+
 
 ## Installation
 
@@ -18,18 +24,16 @@ git clone --depth=50 --branch=main https://github.com/heyiamZer0/recipe-scraper.
 ```sh
 npm run start
 ```
-
 starts the scraper and once finished will save a recipes.json in `./` directory
 
 ## Built With
+* [NodeJS][nodejs] - runtime environment
+* [Axios][axios] - promise based HTTP Client
+* [Cheerio][cheerio] - JQuerry-like API interface
 
--   [NodeJS][nodejs] - runtime environment
--   [Axios][axios] - promise based HTTP Client
--   [Cheerio][cheerio] - JQuerry-like API interface
-
-[nodejs]: https://github.com/nodejs/node
-[axios]: https://github.com/axios/axios
-[cheerio]: https://github.com/cheeriojs/cheerio
+[nodejs]:https://github.com/nodejs/node
+[axios]:https://github.com/axios/axios
+[cheerio]:https://github.com/cheeriojs/cheerio
 
 ## Recipe Object
 
@@ -56,8 +60,8 @@ Some recipes may have the `calories` field set as null.
 
 ## Related projects
 
--   [Recipe REST API][recipe-server]
--   [Recipe React App][react-app]
+- [Recipe REST API][recipe-server]
+- [Recipe React App][react-app]
 
 [recipe-server]: https://github.com/heyiamZer0/recipe-server
 [react-app]: https://github.com/heyiamZer0/recipier-react
