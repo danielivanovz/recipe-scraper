@@ -4,7 +4,7 @@
 	"description": "web scraper for giallo zafferano",
 	"main": "index.js",
 	"scripts": {
-		"run": "node index.js"
+		"start": "node index.js"
 	},
 	"repository": {
 		"type": "git",
@@ -18,7 +18,6 @@
 	"homepage": "https://github.com/heyiamZer0/web-scrapper#readme",
 	"devDependencies": {
 		"axios": "^0.21.1",
-		"cheerio": "^1.0.0-rc.9",
-		"fs": "^0.0.1-security"
+		"cheerio": "^1.0.0-rc.9"
 	}
 }
