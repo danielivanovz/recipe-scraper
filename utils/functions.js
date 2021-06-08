@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 
 const subURL = 'https://www.giallozafferano.it';
-const pathJSON = './output/recipes.json';
+const pathJSON = './recipes.json';
 const URL = `${subURL}/ricette-cat/`;
 
 const recipeCollection = [];
