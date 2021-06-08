@@ -7,7 +7,7 @@
 
 ## Installation
 
-Run the following script in your terminal
+Run the following script in your terminal, it will create a folder containing the script and install dependencies.
 
 ```sh
 git clone --depth=50 --branch=main https://github.com/heyiamZer0/recipe-scraper.git recipe-scraper && cd recipe-scraper && npm install
@@ -15,17 +15,27 @@ git clone --depth=50 --branch=main https://github.com/heyiamZer0/recipe-scraper.
 
 ## Usage
 
-starts the scraper and once finished will save a recipes.json in `./` directory
-
 ```sh
 npm run start
 ```
+
+starts the scraper and once finished will save a recipes.json in `./` directory
+
+## Built With
+
+-   [NodeJS][nodejs] - runtime environment
+-   [Axios][axios] - promise based HTTP Client
+-   [Cheerio][cheerio] - JQuerry-like API interface
+
+[nodejs]: https://github.com/nodejs/node
+[axios]: https://github.com/axios/axios
+[cheerio]: https://github.com/cheeriojs/cheerio
 
 ## Recipe Object
 
 Some recipes may have the `calories` field set as null.
 
-```js
+```typescript
 {
     title: String
     image: String
@@ -43,6 +53,14 @@ Some recipes may have the `calories` field set as null.
     time: Number
 }
 ```
+
+## Related projects
+
+-   [Recipe REST API][recipe-server]
+-   [Recipe React App][react-app]
+
+[recipe-server]: https://github.com/heyiamZer0/recipe-server
+[react-app]: https://github.com/heyiamZer0/recipier-react
 
 ## License
 

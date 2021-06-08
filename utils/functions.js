@@ -158,6 +158,7 @@ const writeJSON = async () => {
 	try {
 		fs.writeFileSync(pathJSON, JSON.stringify(recipeCollection, null, 4));
 		console.log(`JSON data is saved and we successfully scraped: ${recipeCollection.length} recipes`);
+		process.exit();
 	} catch (error) {
 		console.error(error);
 	}

@@ -8,6 +8,7 @@ if (!fs.existsSync(f.pathJSON)) {
 		console.log(f.recipeCollection.length);
 		if (f.isScraped) {
 			clearInterval(loader);
+			process.exit();
 		}
 	}, 1000);
 }
