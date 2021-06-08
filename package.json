@@ -1,0 +1,25 @@
+{
+	"name": "web-scraper",
+	"version": "1.0.0",
+	"description": "web scraper for giallo zafferano",
+	"main": "index.js",
+	"scripts": {
+		"run": "node index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/heyiamZer0/web-scrapper.git"
+	},
+	"author": "Daniel Ivanov",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/heyiamZer0/web-scrapper/issues"
+	},
+	"homepage": "https://github.com/heyiamZer0/web-scrapper#readme",
+	"devDependencies": {
+		"axios": "^0.21.1",
+		"cheerio": "^1.0.0-rc.9",
+		"fs": "^0.0.1-security"
+	}
+}
