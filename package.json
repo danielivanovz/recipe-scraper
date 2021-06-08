@@ -18,6 +18,7 @@
 	"homepage": "https://github.com/heyiamZer0/web-scrapper#readme",
 	"devDependencies": {
 		"axios": "^0.21.1",
-		"cheerio": "^1.0.0-rc.9"
+		"cheerio": "^1.0.0-rc.9",
+		"ora": "^5.4.1"
 	}
 }

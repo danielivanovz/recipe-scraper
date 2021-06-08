@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
+const scraperProcess = require('..');
 
 const subURL = 'https://www.giallozafferano.it';
 const pathJSON = './recipes.json';
@@ -157,7 +158,7 @@ const scrapeRecipe = async (url) => {
 const writeJSON = async () => {
 	try {
 		fs.writeFileSync(pathJSON, JSON.stringify(recipeCollection, null, 4));
-		console.log(`JSON data is saved and we successfully scraped: ${recipeCollection.length} recipes`);
+		console.log(`\nJSON data is saved and we successfully scraped: ${recipeCollection.length} recipes`);
 		process.exit();
 	} catch (error) {
 		console.error(error);
