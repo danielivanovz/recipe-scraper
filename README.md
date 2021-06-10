@@ -21,7 +21,7 @@ git clone --depth=50 --branch=main https://github.com/heyiamZer0/recipe-scraper.
 ## Usage
 
 ```sh
-npm run start
+yarn devTS
 ```
 
 starts the scraper and once finished will save a recipes.json in `./` directory
@@ -31,10 +31,14 @@ starts the scraper and once finished will save a recipes.json in `./` directory
 -   [NodeJS][nodejs] - runtime environment
 -   [Axios][axios] - promise based HTTP Client
 -   [Cheerio][cheerio] - JQuerry-like API interface
+-   [TypeScript 4.0][typescript] - codebase
+-   [Pino][pino] - logging
 
 [nodejs]: https://github.com/nodejs/node
 [axios]: https://github.com/axios/axios
 [cheerio]: https://github.com/cheeriojs/cheerio
+[typescript]:https://github.com/microsoft/TypeScript
+[pino]:https://github.com/pinojs/pino
 
 ## Recipe Object
 
@@ -44,13 +48,14 @@ Some recipes may have the `calories` field set as null.
 {
     title: String
     image: String
+    description: String
     ingredients: [{
-        ingredient: String
+        name: String
         quantity: String
     }]
-    description: [{
+    instructions: [{
         step: Number
-        instructions: String
+        text: String
     }]
     calories: null || Number
     category: String
