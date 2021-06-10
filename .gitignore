@@ -4,3 +4,10 @@ node_modules
 recipes.json
 dist
 js
+test/getLastPage.spec.js
+test/getLinksFromPage.spec.js
+test/getStatus.spec.js
+test/recipe.spec.js
+test/scrapePage.spec.js
+test/scrapeRecipe.spec.js
+test/srapeRecipe.spec.js

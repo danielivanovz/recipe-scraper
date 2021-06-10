@@ -1,4 +1,5 @@
-import { getLastPage, scrapePage } from './scrapers';
+import { getLastPage } from '../src/scrapers/pageScrapers';
+import { scrapePage } from './scrapers/recipeScrapers';
 import { getResponse } from './utils';
 
 export const mainURL = 'https://www.giallozafferano.it/ricette-cat/';
