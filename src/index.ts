@@ -1,9 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
 import cheerio, { Cheerio, CheerioAPI } from 'cheerio';
 import log from './logger';
+import { Recipe } from './Recipe';
 
 export const mainURL = 'https://www.giallozafferano.it';
 export const subURL = '/ricette-cat/';
+export const testURL =
+	'https://ricette.giallozafferano.it/Piadina-con-crema-al-mascarpone-fragole-e-cioccolato-fondente.html';
 
 export class getResponse {
 	async isConnected(URL: string): Promise<number> {
@@ -21,8 +24,8 @@ export const getDOMModel = (response: AxiosResponse<any>): CheerioAPI => {
 export const getLinksFromPage = ($: CheerioAPI): Object => {
 	return $('div.gz-wrap-recipe-top > h2')
 		.toArray()
-		.map((item) => {
-			return $(item).find('a').attr('href');
+		.map((e) => {
+			return $(e).find('a').attr('href');
 		});
 };
 
@@ -30,13 +33,18 @@ export const getLastPage = ($: CheerioAPI): Number => {
 	return Number($('span.disabled.total-pages').text());
 };
 
-const main = async (URL: string) => {
-	const response = new getResponse();
-	const $ = getDOMModel(await response.returnResponse(URL));
-};
-
 export const scrapeRecipe = async ($: CheerioAPI): Promise<Object> => {
+	// return title = $('div.gz-title-content.gz-innerdesktop > h1').text().toLowerCase();
 	return Object;
 };
 
-main(`${mainURL}${subURL}`);
+const main = async (URL: string) => {
+	const connect = new getResponse();
+	const $ = getDOMModel(await connect.returnResponse(URL));
+	const recipe = new Recipe();
+	recipe.createRecipe($);
+	console.log(recipe);
+};
+
+// main(`${mainURL}${subURL}`);
+main(testURL);
