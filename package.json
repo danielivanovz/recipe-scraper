@@ -7,7 +7,7 @@
 		"see": "tsc -w",
 		"devJS": "nodemon dist/index.js",
 		"devTS": "nodemon src/index.ts",
-		"test": "jest",
+		"test": "jest --detectOpenHandles",
 		"test:dev": "jest --watchAll"
 	},
 	"keywords": [],

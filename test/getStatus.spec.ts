@@ -1,4 +1,5 @@
-import { getResponse, mainURL } from '../index';
+import { mainURL } from '../src/index';
+import { getResponse } from '../src/utils';
 
 describe('getStatus function', () => {
 	const response = new getResponse();

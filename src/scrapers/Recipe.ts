@@ -25,6 +25,8 @@ export class Recipe implements RecipeModel {
 
 	constructor() {
 		this.title = '';
+		this.image = '';
+		this.description = '';
 		this.instructions = {
 			step: 0,
 			text: '',
@@ -49,7 +51,11 @@ export class Recipe implements RecipeModel {
 			$('div.gz-topstrip-recipe > div:nth-child(1) > div > picture > img').attr('src'));
 	}
 
-	private setInstructions($: CheerioAPI): object {
+	private setDescription($: CheerioAPI) {
+		return (this.description = $('head > meta:nth-child(8)').attr('content'));
+	}
+
+	private setInstructions($: CheerioAPI): Object {
 		return (this.instructions = $('.gz-content-recipe-step')
 			.toArray()
 			.map((e, index) => {
@@ -58,7 +64,7 @@ export class Recipe implements RecipeModel {
 			}));
 	}
 
-	private setIngredients($: CheerioAPI): object {
+	private setIngredients($: CheerioAPI): Object {
 		return (this.ingredients = $('.gz-list-ingredients > dd')
 			.toArray()
 			.map((e) => {
@@ -87,14 +93,19 @@ export class Recipe implements RecipeModel {
 		return (this.time = parseInt($('ul > li:nth-child(2) > span.gz-name-featured-data > strong').text()));
 	}
 
-	public createRecipe($: CheerioAPI) {
-		this.setTitle($);
-		this.setImage($);
-		this.setIngredients($);
-		this.setInstructions($);
-		this.setCalories($);
-		this.setCategory($);
-		this.setDifficulty($);
-		this.setTime($);
+	public async createRecipe($: CheerioAPI) {
+		try {
+			this.setTitle($);
+			this.setImage($);
+			this.setDescription($);
+			this.setIngredients($);
+			this.setInstructions($);
+			this.setCalories($);
+			this.setCategory($);
+			this.setDifficulty($);
+			this.setTime($);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 }

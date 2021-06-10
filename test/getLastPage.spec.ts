@@ -1,5 +1,7 @@
-import { getDOMModel, getLastPage, getResponse, mainURL } from '../index';
 import 'jest-extended';
+import { mainURL } from '../src';
+import { getLastPage } from '../src/scrapers';
+import { getResponse } from '../src/utils';
 
 describe('getLastPage', () => {
 	const response = new getResponse();
@@ -8,7 +10,7 @@ describe('getLastPage', () => {
 		expect(getLastPage).toBeDefined;
 	});
 	it('should return a number', async () => {
-		const $ = getDOMModel(await response.returnResponse(mainURL));
+		const $ = await response.getDOMModel(await response.returnResponse(mainURL));
 		expect(getLastPage($)).toBeNumber();
 	});
 });
