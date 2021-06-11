@@ -1,16 +1,16 @@
 import { getLastPage } from '../src/scrapers/pageScrapers';
 import { scrapePage } from './scrapers/recipeScrapers';
-import { getResponse } from './utils';
+import { getResponse } from './utils/index';
+import { pathJSON } from './utils/index';
+import fs from 'fs';
 
 export const mainURL = 'https://www.giallozafferano.it/ricette-cat/';
 
-const main = async (URL: string) => {
-	const connect = new getResponse();
-	if (connect.isConnected(URL)) {
-		const $ = connect.getDOMModel(await connect.returnResponse(URL));
-
-		scrapePage(getLastPage(await $));
-	}
+const connect = new getResponse();
+const main = async () => {
+	const $ = connect.getDOMModel(await connect.returnResponse(mainURL));
+	return $;
 };
-
-main(mainURL);
+if (connect.isConnected(mainURL) && !fs.existsSync(pathJSON)) {
+	main().then(($) => scrapePage(getLastPage($)));
+}

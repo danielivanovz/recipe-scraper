@@ -1,7 +1,7 @@
 import fs from 'fs';
-import log from '../logger';
+import log from '../logger/index';
 
-const pathJSON = './recipes.json';
+export const pathJSON = './recipes.json';
 
 export const writeJSON = async (collection: any) => {
 	try {

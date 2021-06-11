@@ -16,11 +16,9 @@ export const scrapePage = async (pageNumber: any) => {
 				recipesCollection.push(recipe);
 			});
 
-			const ratio: number = (377 - pageNumber) / (recipesCollection.length / 15);
-			log.info(`Page: ${377 - pageNumber} Recipes: ${recipesCollection.length} Ratio: ${ratio.toPrecision(1)}`);
-
-			scrapePage(pageNumber - 1);
-		} else if (pageNumber === 0) writeJSON(recipesCollection);
+			scrapePage((await pageNumber) - 1);
+			log.info(`Page: ${pageNumber} Recipes: ${recipesCollection.length}`);
+		} else if (pageNumber === 0) await writeJSON(recipesCollection);
 
 		resolve(recipesCollection);
 		reject('I promised, and failed');
