@@ -4,6 +4,7 @@ node_modules
 recipes.json
 dist
 js
+test/getDOMMOdel.spec.js
 test/getLastPage.spec.js
 test/getLinksFromPage.spec.js
 test/getStatus.spec.js
