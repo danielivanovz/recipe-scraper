@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"see": "tsc -w",
+		"start": "ts-node src/index.ts",
 		"devJS": "nodemon dist/index.js",
 		"devTS": "nodemon src/index.ts",
 		"test": "jest --detectOpenHandles",

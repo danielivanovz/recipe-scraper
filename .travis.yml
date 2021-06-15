@@ -4,6 +4,6 @@ node_js:
 before_install:
     - npm update
 script:
-    - npm run devTS
+    - npm run start
     - npm run converalls
     - npm run test
