@@ -7,7 +7,11 @@
     <img src="https://travis-ci.com/heyiamZer0/recipe-scraper.svg?branch=main" alt="Build Status">
   </a>
   <a href="https://codeclimate.com/github/heyiamZer0/recipe-scraper/maintainability"><img src="https://api.codeclimate.com/v1/badges/e19f00790723cfbae553/maintainability" /></a>
+  <a href='https://coveralls.io/github/heyiamZer0/recipe-scraper'><img src='https://coveralls.io/repos/github/heyiamZer0/recipe-scraper/badge.svg' alt='Coverage Status' /></a>
+
+
 </div>
+
 <br>
 
 ## Installation
