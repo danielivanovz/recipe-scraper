@@ -14,3 +14,4 @@ test/scrapeRecipe.spec.js
 test/srapeRecipe.spec.js
 coverage
 test/test.json
+.coveralls.yml
