@@ -11,10 +11,13 @@ const main = async () => {
 	const $ = connect.getDOMModel(await connect.returnResponse(mainURL));
 	return $;
 };
-if (connect.isConnected(mainURL) && !fs.existsSync(pathJSON)) {
-	main()
-		.then(async ($) => await scrapePage(getLastPage($)))
-		.finally(() => {
-			return;
-		});
-}
+
+// commented due to travis bugging out
+//
+// if (connect.isConnected(mainURL) && !fs.existsSync(pathJSON)) {
+// 	main()
+// 		.then(async ($) => await scrapePage(getLastPage($)))
+// 		.finally(() => {
+// 			return;
+// 		});
+// }
