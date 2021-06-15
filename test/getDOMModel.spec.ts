@@ -1,8 +1,8 @@
 import { mainURL } from '../src';
-import { getResponse } from '../src/utils';
+import { Client } from '../src/utils';
 
 describe('getDOMModel', () => {
-	const connect = new getResponse();
+	const connect = new Client();
 
 	it('should exists', () => {
 		expect(connect.getDOMModel).toBeDefined();

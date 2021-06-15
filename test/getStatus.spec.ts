@@ -1,8 +1,8 @@
 import { mainURL } from '../src/index';
-import { getResponse } from '../src/utils';
+import { Client } from '../src/utils';
 
 describe('getStatus function', () => {
-	const response = new getResponse();
+	const response = new Client();
 
 	it('should exists', () => {
 		expect(response).toBeDefined();

@@ -1,10 +1,10 @@
 import 'jest-extended';
 import { getLinksFromPage } from '../src/scrapers';
-import { getResponse } from '../src/utils';
+import { Client } from '../src/utils';
 import { mainURL } from '../src/index';
 
 describe('getLinksFromPage', () => {
-	const response = new getResponse();
+	const response = new Client();
 	it('should exist', () => {
 		expect(getLinksFromPage).toBeDefined;
 	});

@@ -8,7 +8,8 @@
 		"devJS": "nodemon dist/index.js",
 		"devTS": "nodemon src/index.ts",
 		"test": "jest --detectOpenHandles",
-		"test:dev": "jest --watchAll"
+		"test:dev": "jest --watchAll",
+		"coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
 	},
 	"keywords": [],
 	"author": "Daniel Ivanov",
@@ -17,21 +18,20 @@
 		"@types/jest": "^26.0.23",
 		"@types/node": "^15.12.2",
 		"@types/pino": "^6.3.8",
+		"nodemon": "^2.0.7",
+		"ts-jest": "^27.0.3",
+		"ts-node": "^10.0.0",
+		"typescript": "^4.3.2",
+		"jest": "^27.0.4",
+		"coveralls": "^3.1.0",
+		"jest-extended": "^0.11.5"
+	},
+	"dependencies": {
 		"axios": "^0.21.1",
 		"cheerio": "^1.0.0-rc.10",
 		"dayjs": "^1.10.5",
-		"jest": "^27.0.4",
-		"jest-extended": "^0.11.5",
-		"nodemon": "^2.0.7",
 		"pino": "^6.11.3",
-		"pino-pretty": "^5.0.2",
-		"ts-jest": "^27.0.3",
-		"ts-node": "^10.0.0",
-		"typescript": "^4.3.2"
-	},
-	"dependencies": {
-		"jest": "^27.0.4",
-		"ts-jest": "^27.0.3"
+		"pino-pretty": "^5.0.2"
 	},
 	"jest": {
 		"setupFilesAfterEnv": [

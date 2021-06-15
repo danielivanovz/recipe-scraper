@@ -1,11 +1,11 @@
 import 'jest-extended';
 import { Recipe } from '../src/scrapers';
-import { getResponse } from '../src/utils';
+import { Client } from '../src/utils';
 
 const testURL = 'https://ricette.giallozafferano.it/Tiramisu.html';
 
 describe('Recipe Class', () => {
-	const connect = new getResponse();
+	const connect = new Client();
 	const recipe = new Recipe();
 
 	beforeAll(async () => {

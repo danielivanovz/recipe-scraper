@@ -12,3 +12,5 @@ test/recipe.spec.js
 test/scrapePage.spec.js
 test/scrapeRecipe.spec.js
 test/srapeRecipe.spec.js
+coverage
+test/test.json

@@ -1,2 +1,2 @@
-export * from './getResponse';
+export * from './Client';
 export * from './writeJSON';

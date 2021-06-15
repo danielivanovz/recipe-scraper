@@ -1,10 +1,10 @@
 import 'jest-extended';
 import { mainURL } from '../src';
 import { getLastPage } from '../src/scrapers';
-import { getResponse } from '../src/utils';
+import { Client } from '../src/utils';
 
 describe('getLastPage', () => {
-	const response = new getResponse();
+	const response = new Client();
 
 	it('should exist', () => {
 		expect(getLastPage).toBeDefined;

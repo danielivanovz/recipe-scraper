@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import cheerio, { CheerioAPI } from 'cheerio';
 
-export class getResponse {
+export class Client {
 	isConnected = async (URL: string): Promise<number> => {
 		return (await axios.get(URL)).status;
 	};
