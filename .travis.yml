@@ -1,5 +1,9 @@
 language: node_js
 node_js:
     - '16.3.0'
+before_install:
+    - npm update
 script:
     - npm run devTS
+    - npm run converalls
+    - npm run test
