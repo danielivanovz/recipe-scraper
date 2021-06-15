@@ -1,6 +1,6 @@
 import { CheerioAPI } from 'cheerio';
 
-export const getLastPage = ($: CheerioAPI): Number => {
+export const getLastPage = ($: CheerioAPI): number => {
 	return Number($('span.disabled.total-pages').text());
 };
 

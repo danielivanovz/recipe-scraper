@@ -4,9 +4,10 @@ import { Client, writeJSON } from '../utils';
 import { getLinksFromPage } from './pageScrapers';
 import { pathJSON } from '.';
 
-const recipesCollection: Object[] = [];
+export const recipesCollection: Object[] = [];
+export const mainURL = 'https://www.giallozafferano.it/ricette-cat/';
 
-export const scrapePage = async (pageNumber: any) => {
+export const scrapePage = async (pageNumber: number) => {
 	return new Promise(async (resolve, reject) => {
 		if (pageNumber !== 0) {
 			const connect = new Client();
@@ -17,9 +18,9 @@ export const scrapePage = async (pageNumber: any) => {
 				recipesCollection.push(recipe);
 			});
 
-			scrapePage((await pageNumber) - 1);
-			log.info(`Page: ${pageNumber} Recipes: ${recipesCollection.length}`);
-		} else if (pageNumber === 0) await writeJSON(recipesCollection, pathJSON);
+			await scrapePage(pageNumber - 1);
+			// log.info(`Page: ${pageNumber} Recipes: ${recipesCollection.length}`);
+		} else writeJSON(recipesCollection, pathJSON);
 
 		resolve(recipesCollection);
 		reject('I promised, and failed');

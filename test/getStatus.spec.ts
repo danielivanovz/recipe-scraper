@@ -1,4 +1,4 @@
-import { mainURL } from '../src/index';
+import { mainURL } from '../src/scrapers';
 import { Client } from '../src/utils';
 
 describe('getStatus function', () => {

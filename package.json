@@ -11,7 +11,7 @@
 		"test": "jest --detectOpenHandles",
 		"test:dev": "jest --watchAll",
 		"coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-		"test:coveralls": "jest --coverage && coveralls < coverage/lcov.info"
+		"test:coveralls": "jest --testTimeout=10000 --coverage && coveralls < coverage/lcov.info "
 	},
 	"keywords": [],
 	"author": "Daniel Ivanov",

@@ -1,5 +1,5 @@
 import 'jest-extended';
-import { mainURL } from '../src';
+import { mainURL } from '../src/scrapers';
 import { getLastPage } from '../src/scrapers';
 import { Client } from '../src/utils';
 

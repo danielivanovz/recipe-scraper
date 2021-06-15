@@ -104,8 +104,6 @@ export class Recipe implements RecipeModel {
 			this.setCategory($);
 			this.setDifficulty($);
 			this.setTime($);
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	}
 }
