@@ -4,6 +4,4 @@ node_js:
 before_install:
     - npm update
 script:
-    - npm run start
-    - npm run coveralls
-    - npm run test
+    - npm run test:coveralls

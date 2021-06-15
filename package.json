@@ -6,11 +6,12 @@
 	"scripts": {
 		"see": "tsc -w",
 		"start": "ts-node src/index.ts",
-		"devJS": "nodemon dist/index.js",
-		"devTS": "nodemon src/index.ts",
+		"dev:JS": "nodemon dist/index.js",
+		"dev:TS": "nodemon src/index.ts",
 		"test": "jest --detectOpenHandles",
 		"test:dev": "jest --watchAll",
-		"coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+		"coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+		"test:coveralls": "jest --coverage && coveralls < coverage/lcov.info"
 	},
 	"keywords": [],
 	"author": "Daniel Ivanov",
